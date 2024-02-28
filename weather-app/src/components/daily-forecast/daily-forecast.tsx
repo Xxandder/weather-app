@@ -2,7 +2,7 @@ import styles from './styles.module.scss';
 import rainyIcon from '~/assets/icons/weather/rainy.svg';
 import cloudIcon from '~/assets/icons/cloud.svg';
 import { clsx } from 'clsx'
-import { AddTripButton } from './countdown/countdown.js';
+import { AddTripButton, Countdown } from './countdown/countdown.js';
 
 const DailyForecast: React.FC = () =>{
   return <div className={styles['daily-forecast']}>
@@ -49,7 +49,7 @@ const DailyForecast: React.FC = () =>{
                         Berlin
                     </div>
             </div>
-            <AddTripButton time={new Date('2024-03-02T12:00:00')}/>
+            <Countdown time={new Date('2024-03-02T12:00:00')}/>
         </div>
 
 }
