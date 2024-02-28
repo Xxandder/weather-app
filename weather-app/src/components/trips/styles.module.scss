@@ -1,6 +1,8 @@
 .trips{
     display: flex;
-    gap: 30px
+    gap: 30px;
+    margin-left: -15px;
+    max-width: 100%;
 }
 
 .trips__list-container{
