@@ -4,6 +4,7 @@ type Properties = {
     tripForecast: {
         dayOfTheWeek: string;
         icon: string;
+        date: string;
         minTemperature: number;
         maxTemperature: number;
     }[]
@@ -18,6 +19,9 @@ const TripForecast: React.FC<Properties> = (props) =>{
                     <h3 className={styles["trip-forecast__day-name"]}>
                         {dailyForecast.dayOfTheWeek}
                     </h3>
+                    <p className={styles["trip-forecast__date"]}>
+                    {dailyForecast.date}
+                    </p>
                     <div className={styles["trip-forecast__icon-container"]}>
                         <img src={dailyForecast.icon} alt="" />
                     </div>

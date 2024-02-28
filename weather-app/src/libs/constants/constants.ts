@@ -13,12 +13,14 @@ const tripsForecast = [
     {
         dayOfTheWeek: 'Monday',
         icon: cloudIcon,
+        date: '28.02.2024',
         minTemperature: 15,
         maxTemperature: 16
     },
     {
         dayOfTheWeek: 'Tuesday',
         icon: cloudIcon,
+        date: '28.02.2024',
         minTemperature: 20,
         maxTemperature: 25
     },
@@ -26,6 +28,7 @@ const tripsForecast = [
     {
         dayOfTheWeek: 'Tuesday',
         icon: cloudIcon,
+        date: '28.02.2024',
         minTemperature: 20,
         maxTemperature: 25
     },
@@ -33,6 +36,7 @@ const tripsForecast = [
     {
         dayOfTheWeek: 'Tuesday',
         icon: cloudIcon,
+        date: '28.02.2024',
         minTemperature: 20,
         maxTemperature: 25
     },
@@ -40,6 +44,7 @@ const tripsForecast = [
     {
         dayOfTheWeek: 'Tuesday',
         icon: cloudIcon,
+        date: '28.02.2024',
         minTemperature: 20,
         maxTemperature: 25
     },
@@ -47,24 +52,28 @@ const tripsForecast = [
     {
         dayOfTheWeek: 'Tuesday',
         icon: cloudIcon,
+        date: '28.02.2024',
         minTemperature: 20,
         maxTemperature: 25
     },
     {
         dayOfTheWeek: 'Tuesday',
         icon: cloudIcon,
+        date: '28.02.2024',
         minTemperature: 20,
         maxTemperature: 25
     },
     {
         dayOfTheWeek: 'Tuesday',
         icon: cloudIcon,
+        date: '28.02.2024',
         minTemperature: 20,
         maxTemperature: 25
     },
     {
         dayOfTheWeek: 'Tuesday',
         icon: cloudIcon,
+        date: '28.02.2024',
         minTemperature: 20,
         maxTemperature: 25
     },
