@@ -1,0 +1,53 @@
+.daily-forecast{
+    height: 500px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(17, 14, 59);
+    color: white;
+}
+
+.daily-forecast__info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.daily-forecast__day{
+    margin: 0;
+}
+
+.daily-forecast__value{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.daily-forecast__weather-icon{
+    position: absolute;
+    left: -60px;
+}
+
+.daily-forecast__weather-icon img{
+    width: 3rem;
+}
+
+.daily-forecast__temperature{
+    font-size: 5em;
+    font-weight: 300;
+}
+
+.daily-forecast__temperature sup{
+    font-size: 0.25em;
+    position: relative;
+    top: -1em;
+}
+
+.daily-forecast__city{
+    font-size: 1.5em;
+}
+
+
