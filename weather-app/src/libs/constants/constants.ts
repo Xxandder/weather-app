@@ -50,6 +50,24 @@ const tripsForecast = [
         minTemperature: 20,
         maxTemperature: 25
     },
+    {
+        dayOfTheWeek: 'Tuesday',
+        icon: cloudIcon,
+        minTemperature: 20,
+        maxTemperature: 25
+    },
+    {
+        dayOfTheWeek: 'Tuesday',
+        icon: cloudIcon,
+        minTemperature: 20,
+        maxTemperature: 25
+    },
+    {
+        dayOfTheWeek: 'Tuesday',
+        icon: cloudIcon,
+        minTemperature: 20,
+        maxTemperature: 25
+    },
 ]
 
 
