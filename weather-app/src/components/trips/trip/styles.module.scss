@@ -4,6 +4,7 @@
     border-radius: 10px;
     display: inline-block;
     overflow: hidden;
+    min-width: 250px;
 }   
 
 .trip:hover{
@@ -13,7 +14,6 @@
 
 .trip__image-container{
     position: relative;
-    border-radius: 10px;
     box-shadow: none;
 }
 
