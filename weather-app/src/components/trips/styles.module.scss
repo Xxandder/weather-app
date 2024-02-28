@@ -1,4 +1,10 @@
 .trips{
     display: flex;
-    gap: 15px
+    gap: 30px
+}
+
+.trips__list-container{
+    overflow: auto;
+    padding: 0 15px 0 0 ;
+    border-right: 1px solid rgba(167, 167, 167, 0.466);
 }
