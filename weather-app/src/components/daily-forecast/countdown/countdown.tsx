@@ -1,5 +1,6 @@
 import styles from './styles.module.scss';
 import { getTimeDifference } from './libs/helpers/helpers.js';
+import { useEffect, useState } from 'react';
 
 type Properties = {
     time: Date;
@@ -27,14 +28,18 @@ const CountdownBlock: React.FC<CountdownBlockProperties> = ({value, name}) => {
 }
 
 const Countdown: React.FC<Properties> = ({time}) =>{
-    const { days, hours, minutes, seconds } = getTimeDifference(time);
+    const [timeLeft, setTimeLeft] = useState(getTimeDifference(time));
 
-
+    useEffect(() => {
+        setInterval(() => {
+            setTimeLeft(getTimeDifference(time));
+        }, 1000)})
+        
     return <div className={styles['countdown']}>
-            <CountdownBlock value={days} name={TimeValueType.DAYS}/>
-            <CountdownBlock value={hours} name={TimeValueType.HOURS}/>
-            <CountdownBlock value={minutes} name={TimeValueType.MINUTES}/>
-            <CountdownBlock value={seconds} name={TimeValueType.SECONDS}/>
+            <CountdownBlock value={timeLeft.days} name={TimeValueType.DAYS}/>
+            <CountdownBlock value={timeLeft.hours} name={TimeValueType.HOURS}/>
+            <CountdownBlock value={timeLeft.minutes} name={TimeValueType.MINUTES}/>
+            <CountdownBlock value={timeLeft.seconds} name={TimeValueType.SECONDS}/>
         </div>;
   }
   
