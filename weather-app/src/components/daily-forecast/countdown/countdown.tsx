@@ -20,17 +20,17 @@ const TimeValueType = {
 const CountdownBlock: React.FC<CountdownBlockProperties> = ({value, name}) => {
     
 
-    return <div className="countdown__block">
-        <h2 className="countdown__value">{value}</h2>
-        <p className="countdown__block-name">{name}</p>
+    return <div className={styles["countdown__block"]}>
+        <h2 className={styles["countdown__value"]}>{value}</h2>
+        <p className={styles["countdown__block-name"]}>{name}</p>
     </div>
 }
 
-const AddTripButton: React.FC<Properties> = ({time}) =>{
+const Countdown: React.FC<Properties> = ({time}) =>{
     const { days, hours, minutes, seconds } = getTimeDifference(time);
 
 
-    return <div>
+    return <div className={styles['countdown']}>
             <CountdownBlock value={days} name={TimeValueType.DAYS}/>
             <CountdownBlock value={hours} name={TimeValueType.HOURS}/>
             <CountdownBlock value={minutes} name={TimeValueType.MINUTES}/>
@@ -38,5 +38,5 @@ const AddTripButton: React.FC<Properties> = ({time}) =>{
         </div>;
   }
   
-  export { AddTripButton };
+  export { Countdown };
   
