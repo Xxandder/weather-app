@@ -1,4 +1,4 @@
-
+import styles from './styles.module.scss';
 
 type Properties = {
     name: string;
@@ -10,14 +10,16 @@ type Properties = {
 const Trip: React.FC<Properties> = (props) =>{
     const { name, image, startDate, endDate } = props;
 
-    return <div>
-        <div>
+    return <div className={styles['trip']}>
+        <div className={styles['trip__image-container']}>
             <img src={image} alt={name} />
         </div>
-        <h2>{name}</h2>
-        <p>{startDate} - {endDate}</p>
+        <div className={styles["trip__info"]}>
+            <h2 className={styles['trip__city']}>{name}</h2>
+            <p className={styles['trip__dates']}>{startDate} - {endDate}</p>
+        </div>
     </div>;
   }
   
-  export default Trip;
+  export { Trip };
   

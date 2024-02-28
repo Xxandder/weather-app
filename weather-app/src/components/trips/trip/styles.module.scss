@@ -1,0 +1,27 @@
+.trip{
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(231, 231, 231, 0.521);
+    display: inline-block;
+}   
+
+.trip__image-container{
+    position: relative;
+}
+
+.trip__image-container img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.trip__info{
+    padding-left: 20px;
+}
+
+.trip__city{
+    font-size: 20px;
+}
+
+.trip__dates{
+    font-size: 16px;
+}
