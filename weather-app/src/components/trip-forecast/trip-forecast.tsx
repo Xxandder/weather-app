@@ -1,17 +1,19 @@
 import styles from './styles.module.scss';
 
 type Properties = {
-    dayOfTheWeek: string;
-    icon: string;
-    minTemperature: string;
-    maxTemperature: string;
+    tripForecast: {
+        dayOfTheWeek: string;
+        icon: string;
+        minTemperature: number;
+        maxTemperature: number;
+    }[]
 }
 
 
-const TripForecast: React.FC<Properties[]> = (props) =>{
+const TripForecast: React.FC<Properties> = (props) =>{ 
     return <div className={styles['trip-forecast']}>
         {
-            props.map(dailyForecast => {
+            props.tripForecast.map(dailyForecast => {
                 return <div className={styles['trip-forecast__day']}>
                     <h3 className={styles["trip-forecast__day-name"]}>
                         {dailyForecast.dayOfTheWeek}
