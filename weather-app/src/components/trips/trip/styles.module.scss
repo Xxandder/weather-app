@@ -1,11 +1,15 @@
 .trip{
     font-family: Arial, Helvetica, sans-serif;
-    border: 1px solid rgba(231, 231, 231, 0.521);
+    box-shadow: 0px 0px 10px 0px rgb(156, 156, 156);
+    border-radius: 10px;
     display: inline-block;
+    overflow: hidden;
 }   
 
 .trip__image-container{
     position: relative;
+    border-radius: 10px;
+    box-shadow: none;
 }
 
 .trip__image-container img{
