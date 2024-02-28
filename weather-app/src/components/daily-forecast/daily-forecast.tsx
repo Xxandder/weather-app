@@ -1,8 +1,38 @@
 import styles from './styles.module.scss';
 import rainyIcon from '~/assets/icons/weather/rainy.svg';
+import cloudIcon from '~/assets/icons/cloud.svg';
+import { clsx } from 'clsx'
 
 const DailyForecast: React.FC = () =>{
   return <div className={styles['daily-forecast']}>
+            <div className={clsx(
+                styles["daily-forecast__cloud-first"],
+                styles["daily-forecast__cloud"],
+                "_ibg"
+                )}>
+                <img src={cloudIcon} alt="" />
+            </div>
+            <div className={clsx(
+                styles["daily-forecast__cloud-second"],
+                styles["daily-forecast__cloud"],
+                "_ibg"
+                )}>
+                <img src={cloudIcon} alt="" />
+            </div>
+            <div className={clsx(
+                styles["daily-forecast__cloud-third"],
+                styles["daily-forecast__cloud"],
+                "_ibg"
+                )}>
+                <img src={cloudIcon} alt="" />
+            </div>
+            <div className={clsx(
+                styles["daily-forecast__cloud-fourth"],
+                styles["daily-forecast__cloud"],
+                "_ibg"
+                )}>
+                <img src={cloudIcon} alt="" />
+            </div>
             <div className={styles["daily-forecast__info"]}>
                 <h2 className={styles["daily-forecast__day"]}>Sunday</h2>
                 <div className={styles["daily-forecast__value"]}>

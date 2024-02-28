@@ -7,12 +7,16 @@
     align-items: center;
     background-color: rgb(17, 14, 59);
     color: white;
+    position: relative;
+    overflow: hidden;
 }
 
 .daily-forecast__info{
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 1;
 }
 
 .daily-forecast__day{
@@ -51,3 +55,31 @@
 }
 
 
+.daily-forecast__cloud{
+   
+    
+}
+
+.daily-forecast__cloud-first{
+    top: -150px;
+    left: -150px;
+}
+
+.daily-forecast__cloud-second{
+    right: -50px;
+}
+
+.daily-forecast__cloud-third{
+    top: 100px;
+    left: -200px;
+}
+
+.daily-forecast__cloud-fourth{
+    top: 200px;
+    left: 0;
+}   
+
+.daily-forecast__cloud img{
+    height: 102px;
+    width: 128px;
+}
