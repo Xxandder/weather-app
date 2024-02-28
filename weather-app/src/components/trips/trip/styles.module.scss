@@ -4,7 +4,7 @@
     border-radius: 10px;
     display: inline-block;
     overflow: hidden;
-    min-width: 250px;
+    min-width: 200px;
 }   
 
 .trip:hover{
@@ -18,8 +18,8 @@
 }
 
 .trip__image-container img{
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
 }
 
@@ -32,5 +32,5 @@
 }
 
 .trip__dates{
-    font-size: 16px;
+    font-size: 14px;
 }
