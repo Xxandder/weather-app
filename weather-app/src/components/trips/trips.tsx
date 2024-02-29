@@ -2,9 +2,11 @@ import { AddTripButton } from './add-trip-button/add-trip-button';
 import { TripsList } from './trips-list/trips-list';
 import { cities } from '~/libs/constants/constants.js';
 import styles from './styles.module.scss';
+import { type Trip } from '~/libs/types/trip.type';
 
 type Properties = {
     onAddTripButtonClick: (...args: any) => any;
+    trips: Trip[]
 }
 
 const Trips: React.FC<Properties> = ({onAddTripButtonClick}) =>{

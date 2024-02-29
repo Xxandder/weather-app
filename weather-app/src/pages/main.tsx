@@ -5,12 +5,17 @@ import searchIcon from '~/assets/icons/search.svg';
 import { tripsForecast } from '../libs/constants/constants.js';
 import clsx from 'clsx'
 import styles from './styles.module.scss';
-import { cities } from '../libs/constants/constants.js';
+import { cities, trips } from '../libs/constants/constants.js';
+import { type Trip } from '~/libs/types/trip.type.js';
 
 const MainPage: React.FC = () => {
     const [name, setName] = useState('');
 
     const [showModal, setShowModal] = useState<boolean>(false);
+
+    const [trips, setTrips] = useState<Trip[]>([]);
+
+    
 
     const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
@@ -20,6 +25,7 @@ const MainPage: React.FC = () => {
     const toggleModal = useCallback(()=>{
         setShowModal(!showModal)
     }, [showModal])
+
 
     return (
         <div className="_container">
@@ -32,7 +38,7 @@ const MainPage: React.FC = () => {
                             <img src={searchIcon} alt="" />
                             <input type="text" value={name} onChange={handleInputOnChange} placeholder='Search your trip'/>
                     </div>
-                    <Trips onAddTripButtonClick={toggleModal}/>
+                    <Trips trips={trips} onAddTripButtonClick={toggleModal}/>
                     <TripForecast tripForecast={tripsForecast}/>
                 </main>
                 <DailyForecast/>
