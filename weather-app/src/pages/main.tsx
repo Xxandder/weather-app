@@ -17,6 +17,8 @@ const MainPage: React.FC = () => {
 
     const [trips, setTrips] = useState<TripData[]>([...tripsList]);
 
+    const currentTrip = useState()
+
     const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
         console.log(name);
@@ -28,6 +30,7 @@ const MainPage: React.FC = () => {
 
     const addTrip =(trip: FormData) => {
         const newTrip = {
+            key: trips[trips.length-1].key + 1,
             city: {
                 name: trip.city,
                 image: cities.find(city=>city.name===trip.city)?.image ?? ''
