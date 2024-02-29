@@ -5,17 +5,12 @@ import clsx from 'clsx'
 import { convertDateToString } from "~/libs/helpers/helpers.js";
 import { DAYS_FOR_TRIP_RANGE } from "./libs/constants/constants";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { type FormData } from "~/libs/types/types.js";
 
 type Properties = {
     onClose: () => void;
     onSubmit: (...args: any) => void;
     cities: string[]
-}
-
-type FormData = {
-    city: string;
-    startDate: Date;
-    endDate: Date;
 }
 
 const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
@@ -33,7 +28,6 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
     }, [startDateValue])
 
     const handleSaveClick = () => {
-        console.log(errors)
         if (formRef.current && isValid) {
             handleSubmit(onSubmit)();
         }
