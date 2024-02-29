@@ -90,7 +90,10 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
                         )} onClick={onClose}>Cancel</button>
                         <button className={clsx(styles["modal__save"],
                         styles["modal__button"],
-                        )} onClick={handleSaveClick}>Save</button>
+                        )} onClick={()=>{
+                            handleSaveClick();
+                            onClose();
+                            }}>Save</button>
                 </footer>
             </div>
         </div>
