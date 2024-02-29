@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { ChangeEvent, useCallback, useRef, useState } from "react";
 import styles from './styles.module.scss';
 import closeIcon from '~/assets/icons/close-icon.svg';
 import clsx from 'clsx'
@@ -13,7 +13,12 @@ type Properties = {
 const Modal: React.FC<Properties> = ({onClose, cities}) => {
     const modalRef = useRef<HTMLDialogElement>(null);
 
-    const [startDateValue, setStartDateValue] = useState(false);
+    const [startDateValue, setStartDateValue] = useState<Date | null>(null);
+
+    const handleStartDateChanged = useCallback(
+        (event: ChangeEvent<HTMLInputElement>)=>{
+        setStartDateValue(new Date(event.target.value))
+    }, [startDateValue])
 
     const currentDate = convertDateToString(new Date);
 
@@ -47,7 +52,7 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>Start Date</p>
                         <input type="date"  min={currentDate} max={maxDate}
-                            onChange={()=>setStartDateValue(true)}/>
+                            onChange={handleStartDateChanged}/>
                     </label>
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>End Date</p>
