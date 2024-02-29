@@ -20,17 +20,17 @@ const Modal: React.FC = () => {
 
                 <form action="" className={styles['modal__form']}>
                     <label className={styles['modal__input']}>
-                        City
+                        <p><sup>*</sup>City</p>
                         <select name="" id="">
                             <option value="Berlin">Berlin</option>
                         </select>
                     </label>
                     <label className={styles['modal__input']}>
-                        Start date
+                        <p><sup>*</sup>Start Date</p>
                         <input type="date" />
                     </label>
                     <label className={styles['modal__input']}>
-                        End date
+                        <p><sup>*</sup>End Date</p>
                         <input type="date" />
                     </label>
                     
