@@ -2,12 +2,24 @@ import berlinImage from '~/assets/images/berlin.jpg';
 import warsawImage from '~/assets/images/berlin.jpg';
 import pragueImage from '~/assets/images/berlin.jpg';
 import cloudIcon from '~/assets/icons/cloud.svg'
+import { Trip } from '../types/trip.type';
 
 const cities = [
     {name: 'Berlin', image: berlinImage},
     {name: 'Warsaw', image: warsawImage},
     {name: 'Prague', image: pragueImage}
-];
+] as const;
+
+const trips: Trip[] = [
+    {
+        city: {
+            name: 'Berlin', 
+            image: berlinImage,
+        },
+        startDate: new Date(),
+        endDate: new Date((new Date()).getDate() + 5)
+    }
+]
 
 const tripsForecast = [
     {
@@ -81,4 +93,4 @@ const tripsForecast = [
 
 
 
-export { cities, tripsForecast };
+export { cities, tripsForecast, trips };
