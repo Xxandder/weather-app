@@ -1,0 +1,41 @@
+.main-page{
+    display: flex;
+    gap: 30px;
+    flex-wrap: nowrap;
+    justify-content: center;
+    padding-top: 30px;
+    max-width: 100%;
+}
+
+.main{
+    max-width: calc(100% - 330px);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+.find-by-name{
+    position: relative;
+    display: inline-block;
+}
+
+.find-by-name input{
+   padding: 10px 10px 10px 30px;
+  
+   background-color: rgba(214, 214, 214, 0.616);
+    border-radius: 5px;
+}
+
+.find-by-name img{
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    left: 10px;
+    top: 47%;
+    transform: translateY(-50%);
+}
+
+.find-by-name__label{
+
+}

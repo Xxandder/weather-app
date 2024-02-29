@@ -1,15 +1,9 @@
-
-import { DailyForecast } from "./components/daily-forecast/daily-forecast.js";
-import { TripForecast } from "./components/trip-forecast/trip-forecast.js";
-import { Trips } from "./components/trips/trips.js";
-import { tripsForecast } from './libs/constants/constants.js';
+import { MainPage } from "./pages/main"
 
 function App() {
   return (
     <>
-      <Trips/>
-      <DailyForecast/>
-      <TripForecast tripForecast={tripsForecast}/>
+      <MainPage/>
     </>
   )
 }
