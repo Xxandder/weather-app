@@ -3,15 +3,19 @@ import styles from './styles.module.scss';
 import closeIcon from '~/assets/icons/close-icon.svg';
 import clsx from 'clsx'
 
-const Modal: React.FC = () => {
+type Properties = {
+    onClose: () => void;
+}
+
+const Modal: React.FC<Properties> = ({onClose}) => {
     const modalRef = useRef<HTMLDialogElement>(null);
 
-  return (
+    return (
     <dialog ref={modalRef}>
         <div className={styles['overlay']}>
             <div className={styles['modal']}>
                 <div className={styles["modal__header-container"]}>
-                    <div className={styles["modal__close-icon-container"]}>
+                    <div className={styles["modal__close-icon-container"]} onClick={onClose}>
                         <img src={closeIcon} alt="" />
                     </div>
                     <h2 className={styles['modal__header']}>
@@ -39,7 +43,7 @@ const Modal: React.FC = () => {
                 <footer className={styles["modal__footer"]}>
                         <button className={clsx(styles["modal__close"],
                         styles["modal__button"]
-                        )}>Cancel</button>
+                        )} onClick={onClose}>Cancel</button>
                         <button className={clsx(styles["modal__save"],
                         styles["modal__button"]
                         )}>Save</button>

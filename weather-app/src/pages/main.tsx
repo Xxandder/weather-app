@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import { DailyForecast, TripForecast, Trips, Modal } from '../components/components.js';
 import searchIcon from '~/assets/icons/search.svg';
 import { tripsForecast } from '../libs/constants/constants.js';
@@ -13,25 +13,31 @@ const MainPage: React.FC = () => {
         console.log(name);
     }
 
-  return (
-    <div className="_container">
-        <Modal/>
-        <div className={styles['main-page']}>
-            <main className={styles['main']}>
-                <h1 className={styles['main__header']}>Weather Forecast</h1>
-                <div className={clsx(styles["main__find-by-name"],
-                                     styles["find-by-name"])}>         
-                        <img src={searchIcon} alt="" />
-                        <input type="text" value={name} onChange={handleInputOnChange} placeholder='Search your trip'/>
-                </div>
-                <Trips/>
-                <TripForecast tripForecast={tripsForecast}/>
-            </main>
-            <DailyForecast/>
-            
+    const [showModal, setShowModal] = useState<boolean>(true);
+
+    const toggleModal = useCallback(()=>{
+        setShowModal(!showModal)
+    }, [showModal])
+
+    return (
+        <div className="_container">
+            {showModal && <Modal onClose={toggleModal}/>}
+            <div className={styles['main-page']}>
+                <main className={styles['main']}>
+                    <h1 className={styles['main__header']}>Weather Forecast</h1>
+                    <div className={clsx(styles["main__find-by-name"],
+                                        styles["find-by-name"])}>         
+                            <img src={searchIcon} alt="" />
+                            <input type="text" value={name} onChange={handleInputOnChange} placeholder='Search your trip'/>
+                    </div>
+                    <Trips/>
+                    <TripForecast tripForecast={tripsForecast}/>
+                </main>
+                <DailyForecast/>
+                
+            </div>
         </div>
-    </div>
-  )
-}
+    )
+    }
 
 export { MainPage };
