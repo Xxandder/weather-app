@@ -8,7 +8,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 type Properties = {
     onClose: () => void;
-    onSubmit: () => void;
+    onSubmit: (...args: any) => void;
     cities: string[]
 }
 
@@ -16,7 +16,7 @@ type FormData = {
     city: string;
     startDate: Date;
     endDate: Date;
-  }
+}
 
 const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
 
@@ -38,6 +38,7 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
             handleSubmit(onSubmit)();
         }
     }
+
     const currentDate = convertDateToString(new Date);
 
     const futureDate = new Date();

@@ -1,4 +1,4 @@
-type Trip = {
+type TripData = {
     city: {
         name: string;
         image: string
@@ -7,4 +7,4 @@ type Trip = {
     endDate: Date;
 }
 
-export { type Trip };
+export { type TripData };

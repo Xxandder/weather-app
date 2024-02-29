@@ -1,1 +1,1 @@
-export { type Trip } from './trip.type.js';
+export { type TripData } from './trip-data.type.js';
