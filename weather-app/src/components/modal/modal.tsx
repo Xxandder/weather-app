@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import styles from './styles.module.scss';
 import closeIcon from '~/assets/icons/close-icon.svg';
 import clsx from 'clsx'
+import { convertDateToString } from "~/libs/helpers/helpers.js";
+import { DAYS_FOR_TRIP_RANGE } from "./libs/constants/constants";
 
 type Properties = {
     onClose: () => void;
@@ -10,6 +12,14 @@ type Properties = {
 
 const Modal: React.FC<Properties> = ({onClose, cities}) => {
     const modalRef = useRef<HTMLDialogElement>(null);
+
+    const [startDateValue, setStartDateValue] = useState(false);
+
+    const currentDate = convertDateToString(new Date);
+
+    const futureDate = new Date();
+    futureDate.setDate(futureDate.getDate() + DAYS_FOR_TRIP_RANGE);
+    const maxDate = convertDateToString(futureDate);
 
     return (
     <dialog ref={modalRef}>
@@ -36,11 +46,12 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
                     </label>
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>Start Date</p>
-                        <input type="date" />
+                        <input type="date"  min={currentDate} max={maxDate}
+                            onChange={()=>setStartDateValue(true)}/>
                     </label>
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>End Date</p>
-                        <input type="date" />
+                        <input type="date" disabled={!Boolean(startDateValue)}/>
                     </label>
                     
                 </form>
@@ -49,7 +60,7 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
                         styles["modal__button"]
                         )} onClick={onClose}>Cancel</button>
                         <button className={clsx(styles["modal__save"],
-                        styles["modal__button"]
+                        styles["modal__button"],
                         )}>Save</button>
                 </footer>
             </div>
