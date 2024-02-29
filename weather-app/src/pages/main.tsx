@@ -17,7 +17,7 @@ const MainPage: React.FC = () => {
 
     const [trips, setTrips] = useState<TripData[]>([...tripsList]);
 
-    const currentTrip = useState()
+    const [currentTrip, setCurrentTrip] = useState<number | null>(trips[0].id ?? null);
 
     const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
@@ -30,7 +30,7 @@ const MainPage: React.FC = () => {
 
     const addTrip =(trip: FormData) => {
         const newTrip = {
-            key: trips[trips.length-1].key + 1,
+            id: trips[trips.length-1].id + 1,
             city: {
                 name: trip.city,
                 image: cities.find(city=>city.name===trip.city)?.image ?? ''
@@ -40,6 +40,10 @@ const MainPage: React.FC = () => {
         }
         setTrips([...trips, newTrip])
     }
+
+    const handleTripClick = useCallback((id: number) =>{
+        setCurrentTrip(id);
+    }, [trips])
 
     return (
         <div className="_container">

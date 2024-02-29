@@ -10,7 +10,7 @@ const TripsList: React.FC<Properties> = ({trips}) =>{
 
   return <>
         <div className={styles["trips__list"]}>
-        {trips.map(trip=><Trip {...trip}/>)}
+        {trips.map(trip=><Trip {...trip} key={trip.id}/>)}
         </div>
         
   </>;

@@ -12,7 +12,7 @@ const cities = [
 
 const tripsList: TripData[] = [
     {
-        key: 1,
+        id: 1,
         city: {
             name: 'Warsaw', 
             image: warsawImage,

@@ -1,5 +1,5 @@
 type TripData = {
-    key: number;
+    id: number;
     city: {
         name: string;
         image: string
