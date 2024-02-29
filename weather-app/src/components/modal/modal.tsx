@@ -12,7 +12,6 @@ type Properties = {
     cities: string[]
 }
 
-
 type FormData = {
     city: string;
     startDate: Date;
@@ -24,7 +23,7 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
     const modalRef = useRef<HTMLDialogElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
 
-    const { register, handleSubmit, formState: { isValid } } = useForm<FormData>();
+    const { register, handleSubmit, formState: { isValid, errors } } = useForm<FormData>();
 
     const [startDateValue, setStartDateValue] = useState<Date | null>(null);
 
@@ -34,18 +33,17 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
     }, [startDateValue])
 
     const handleSaveClick = () => {
-       
+        console.log(errors)
         if (formRef.current && isValid) {
             handleSubmit(onSubmit)();
         }
-      }
-
+    }
     const currentDate = convertDateToString(new Date);
 
     const futureDate = new Date();
     futureDate.setDate(futureDate.getDate() + DAYS_FOR_TRIP_RANGE);
     const maxDate = convertDateToString(futureDate);
-    
+
     return (
     <dialog ref={modalRef}>
         <div className={styles['overlay']}>
@@ -70,6 +68,7 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
                             })}
                             
                         </select>
+                        {errors['city'] && <span className="modal__error-message">{errors['city'].message}</span>}
                     </label>
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>Start Date</p>
@@ -77,6 +76,7 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
                                 required: true,
                               })}  type="date"  min={currentDate} max={maxDate}
                             onChange={handleStartDateChanged}/>
+                            {errors['startDate'] && <span className="modal__error-message">{errors['startDate']?.message}</span>}
                     </label>
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>End Date</p>
@@ -85,6 +85,7 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
                               })}  type="date" disabled={!Boolean(startDateValue)}
                         min={startDateValue ? convertDateToString(startDateValue) :  currentDate }
                         max={maxDate}/>
+                        {errors['endDate'] && <span className="modal__error-message">{errors['endDate']?.message}</span>}
                     </label>
                     
                 </form>
