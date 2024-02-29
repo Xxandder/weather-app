@@ -56,7 +56,7 @@ const MainPage: React.FC = () => {
                             <img src={searchIcon} alt="" />
                             <input type="text" value={name} onChange={handleInputOnChange} placeholder='Search your trip'/>
                     </div>
-                    <Trips trips={trips} onAddTripButtonClick={toggleModal} onTripClicked={handleTripClick}/>
+                    <Trips activeId={currentTrip ?? 0} trips={trips} onAddTripButtonClick={toggleModal} onTripClicked={handleTripClick}/>
                     <TripForecast tripForecast={tripsForecast}/>
                 </main>
                 <DailyForecast/>

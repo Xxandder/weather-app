@@ -6,6 +6,7 @@ import { MouseEvent } from 'react';
 type Properties = {
     trip: TripData,
     onClick: (...args: any) => void;
+    isActive: boolean;
 }
 
 const Trip: React.FC<Properties> = (props) =>{
