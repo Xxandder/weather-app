@@ -25,7 +25,7 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
     const futureDate = new Date();
     futureDate.setDate(futureDate.getDate() + DAYS_FOR_TRIP_RANGE);
     const maxDate = convertDateToString(futureDate);
-
+    
     return (
     <dialog ref={modalRef}>
         <div className={styles['overlay']}>
@@ -56,7 +56,9 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
                     </label>
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>End Date</p>
-                        <input type="date" disabled={!Boolean(startDateValue)}/>
+                        <input type="date" disabled={!Boolean(startDateValue)}
+                        min={startDateValue ? convertDateToString(new Date(startDateValue as Date + 1)) :  currentDate }
+                        max={maxDate}/>
                     </label>
                     
                 </form>
