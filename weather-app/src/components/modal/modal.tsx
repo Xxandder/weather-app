@@ -57,7 +57,7 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>End Date</p>
                         <input type="date" disabled={!Boolean(startDateValue)}
-                        min={startDateValue ? convertDateToString(new Date(startDateValue as Date + 1)) :  currentDate }
+                        min={startDateValue ? convertDateToString(startDateValue) :  currentDate }
                         max={maxDate}/>
                     </label>
                     
