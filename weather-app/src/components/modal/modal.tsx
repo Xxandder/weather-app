@@ -4,14 +4,27 @@ import closeIcon from '~/assets/icons/close-icon.svg';
 import clsx from 'clsx'
 import { convertDateToString } from "~/libs/helpers/helpers.js";
 import { DAYS_FOR_TRIP_RANGE } from "./libs/constants/constants";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 type Properties = {
     onClose: () => void;
+    onSubmit: () => void;
     cities: string[]
 }
 
-const Modal: React.FC<Properties> = ({onClose, cities}) => {
+
+type FormData = {
+    city: string;
+    startDate: Date;
+    endDate: Date;
+  }
+
+const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
+
     const modalRef = useRef<HTMLDialogElement>(null);
+    const formRef = useRef<HTMLFormElement>(null);
+
+    const { register, handleSubmit, formState: { isValid } } = useForm<FormData>();
 
     const [startDateValue, setStartDateValue] = useState<Date | null>(null);
 
@@ -19,6 +32,13 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
         (event: ChangeEvent<HTMLInputElement>)=>{
         setStartDateValue(new Date(event.target.value))
     }, [startDateValue])
+
+    const handleSaveClick = () => {
+       
+        if (formRef.current && isValid) {
+            handleSubmit(onSubmit)();
+        }
+      }
 
     const currentDate = convertDateToString(new Date);
 
@@ -39,10 +59,12 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
                     </h2>
                 </div>
 
-                <form action="" className={styles['modal__form']}>
+                <form onSubmit={handleSubmit(onSubmit)} ref={formRef} action="" className={styles['modal__form']}>
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>City</p>
-                        <select name="" id="">
+                        <select {...register('city', {
+                                required: true,
+                              })}  name="" id="">
                             {cities.map(city=>{
                                 return <option value={city}>{city}</option>
                             })}
@@ -51,12 +73,16 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
                     </label>
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>Start Date</p>
-                        <input type="date"  min={currentDate} max={maxDate}
+                        <input {...register('startDate', {
+                                required: true,
+                              })}  type="date"  min={currentDate} max={maxDate}
                             onChange={handleStartDateChanged}/>
                     </label>
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>End Date</p>
-                        <input type="date" disabled={!Boolean(startDateValue)}
+                        <input {...register('endDate', {
+                                required: true,
+                              })}  type="date" disabled={!Boolean(startDateValue)}
                         min={startDateValue ? convertDateToString(startDateValue) :  currentDate }
                         max={maxDate}/>
                     </label>
@@ -68,7 +94,7 @@ const Modal: React.FC<Properties> = ({onClose, cities}) => {
                         )} onClick={onClose}>Cancel</button>
                         <button className={clsx(styles["modal__save"],
                         styles["modal__button"],
-                        )}>Save</button>
+                        )} onClick={handleSaveClick}>Save</button>
                 </footer>
             </div>
         </div>
