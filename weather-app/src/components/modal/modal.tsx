@@ -5,9 +5,10 @@ import clsx from 'clsx'
 
 type Properties = {
     onClose: () => void;
+    cities: string[]
 }
 
-const Modal: React.FC<Properties> = ({onClose}) => {
+const Modal: React.FC<Properties> = ({onClose, cities}) => {
     const modalRef = useRef<HTMLDialogElement>(null);
 
     return (
@@ -27,7 +28,10 @@ const Modal: React.FC<Properties> = ({onClose}) => {
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>City</p>
                         <select name="" id="">
-                            <option value="Berlin">Berlin</option>
+                            {cities.map(city=>{
+                                return <option value={city}>{city}</option>
+                            })}
+                            
                         </select>
                     </label>
                     <label className={styles['modal__input']}>

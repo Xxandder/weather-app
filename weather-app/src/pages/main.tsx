@@ -4,6 +4,7 @@ import searchIcon from '~/assets/icons/search.svg';
 import { tripsForecast } from '../libs/constants/constants.js';
 import clsx from 'clsx'
 import styles from './styles.module.scss';
+import { cities } from '../libs/constants/constants.js';
 
 const MainPage: React.FC = () => {
     const [name, setName] = useState('');
@@ -21,7 +22,7 @@ const MainPage: React.FC = () => {
 
     return (
         <div className="_container">
-            {showModal && <Modal onClose={toggleModal}/>}
+            {showModal && <Modal cities={cities.map(city=>city.name)} onClose={toggleModal}/>}
             <div className={styles['main-page']}>
                 <main className={styles['main']}>
                     <h1 className={styles['main__header']}>Weather Forecast</h1>
