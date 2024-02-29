@@ -1,22 +1,16 @@
-import { Trip } from '../trip/trip.js';
+import { type TripData } from "~/libs/types/trip-data.type";
+import { Trip } from "../trip/trip";
 import styles from './styles.module.scss';
 
-type City = {
-    name: string;
-    image: string;
-    startDate: string;
-    endDate: string;
-}
-
 type Properties = {
-    cities: City[]
+    trips: TripData[]
 }
 
-const TripsList: React.FC<Properties> = ({cities}) =>{
+const TripsList: React.FC<Properties> = ({trips}) =>{
 
   return <>
         <div className={styles["trips__list"]}>
-        {cities.map(city=><Trip {...city}/>)}
+        {trips.map(trip=><Trip {...trip}/>)}
         </div>
         
   </>;
