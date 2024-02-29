@@ -3,7 +3,11 @@ import { TripsList } from './trips-list/trips-list';
 import { cities } from '~/libs/constants/constants.js';
 import styles from './styles.module.scss';
 
-const Trips: React.FC = () =>{
+type Properties = {
+    onAddTripButtonClick: (...args: any) => any;
+}
+
+const Trips: React.FC<Properties> = ({onAddTripButtonClick}) =>{
     const berlin = cities[0]
     const startDate = '28.02.2024';
     const endDate = '30.02.2024';
@@ -17,7 +21,7 @@ const Trips: React.FC = () =>{
                 {...berlin, startDate, endDate}]}/>
             </div>
            
-            <AddTripButton/>    
+            <AddTripButton onClick={onAddTripButtonClick}/>    
         </div>
        
   </>;
