@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from 'react';
-import { DailyForecast, TripForecast, Trips } from '../components/components.js';
+import { DailyForecast, TripForecast, Trips, Modal } from '../components/components.js';
 import searchIcon from '~/assets/icons/search.svg';
 import { tripsForecast } from '../libs/constants/constants.js';
 import clsx from 'clsx'
@@ -15,6 +15,7 @@ const MainPage: React.FC = () => {
 
   return (
     <div className="_container">
+        <Modal/>
         <div className={styles['main-page']}>
             <main className={styles['main']}>
                 <h1 className={styles['main__header']}>Weather Forecast</h1>
@@ -27,6 +28,7 @@ const MainPage: React.FC = () => {
                 <TripForecast tripForecast={tripsForecast}/>
             </main>
             <DailyForecast/>
+            
         </div>
     </div>
   )
