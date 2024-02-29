@@ -41,6 +41,7 @@ dialog{
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    cursor: pointer;
 }
 
 .modal__close-icon-container img{
@@ -101,6 +102,7 @@ dialog{
     padding: 5px;
     background-color: #fff;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .modal__button:hover{
