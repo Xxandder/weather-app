@@ -88,8 +88,23 @@ dialog{
 }
 
 .modal__footer{
-    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+    padding: 15px 0;
     border-top: 1px solid  rgba(214, 214, 214, 0.616);
+}
+
+.modal__button{
+    border: 1px solid  rgba(214, 214, 214, 0.616);
+    border-radius: 3px;
+    padding: 5px;
+    background-color: #fff;
+    font-size: 16px;
+}
+
+.modal__button:hover{
+    background-color: rgba(214, 214, 214, 0.616);
 }
 
 .modal__close{
@@ -97,7 +112,11 @@ dialog{
 }
 
 .modal__save{
+    background-color: #3f7fdf80;
+}
 
+.modal__save:hover{
+    background-color: #3f7fdfea;
 }
 
 

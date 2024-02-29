@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import styles from './styles.module.scss';
 import closeIcon from '~/assets/icons/close-icon.svg';
+import clsx from 'clsx'
 
 const Modal: React.FC = () => {
     const modalRef = useRef<HTMLDialogElement>(null);
@@ -36,8 +37,12 @@ const Modal: React.FC = () => {
                     
                 </form>
                 <footer className={styles["modal__footer"]}>
-                        <button className={styles["modal__close"]}>Cancel</button>
-                        <button className={styles["modal__save"]}>Save</button>
+                        <button className={clsx(styles["modal__close"],
+                        styles["modal__button"]
+                        )}>Cancel</button>
+                        <button className={clsx(styles["modal__save"],
+                        styles["modal__button"]
+                        )}>Save</button>
                 </footer>
             </div>
         </div>
