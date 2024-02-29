@@ -9,12 +9,15 @@ const Modal: React.FC = () => {
     <dialog ref={modalRef}>
         <div className={styles['overlay']}>
             <div className={styles['modal']}>
-                <div className={styles["modal__close-icon-container"]}>
-                    <img src={closeIcon} alt="" />
+                <div className={styles["modal__header-container"]}>
+                    <div className={styles["modal__close-icon-container"]}>
+                        <img src={closeIcon} alt="" />
+                    </div>
+                    <h2 className={styles['modal__header']}>
+                        Create Trip
+                    </h2>
                 </div>
-                <h2 className={styles['modal__header']}>
-                    Create Trip
-                </h2>
+
                 <form action="" className={styles['modal__form']}>
                     <label className={styles['modal__input']}>
                         City
