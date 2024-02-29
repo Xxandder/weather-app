@@ -3,14 +3,16 @@ import { Trip } from "../trip/trip";
 import styles from './styles.module.scss';
 
 type Properties = {
-    trips: TripData[]
+    trips: TripData[];
+    onTripClicked: (...args: any) => void;
 }
 
-const TripsList: React.FC<Properties> = ({trips}) =>{
+const TripsList: React.FC<Properties> = ({onTripClicked, trips}) =>{
 
   return <>
         <div className={styles["trips__list"]}>
-        {trips.map(trip=><Trip {...trip} key={trip.id}/>)}
+        {trips.map(trip=><Trip trip={trip} key={trip.id}
+            onClick={onTripClicked}/>)}
         </div>
         
   </>;

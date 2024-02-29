@@ -21,7 +21,6 @@ const MainPage: React.FC = () => {
 
     const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
-        console.log(name);
     }
 
     const toggleModal = useCallback(()=>{
@@ -43,7 +42,7 @@ const MainPage: React.FC = () => {
 
     const handleTripClick = useCallback((id: number) =>{
         setCurrentTrip(id);
-    }, [trips])
+    }, [trips, currentTrip])
 
     return (
         <div className="_container">
@@ -57,7 +56,7 @@ const MainPage: React.FC = () => {
                             <img src={searchIcon} alt="" />
                             <input type="text" value={name} onChange={handleInputOnChange} placeholder='Search your trip'/>
                     </div>
-                    <Trips trips={trips} onAddTripButtonClick={toggleModal}/>
+                    <Trips trips={trips} onAddTripButtonClick={toggleModal} onTripClicked={handleTripClick}/>
                     <TripForecast tripForecast={tripsForecast}/>
                 </main>
                 <DailyForecast/>
