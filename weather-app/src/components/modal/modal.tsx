@@ -34,7 +34,7 @@ const Modal: React.FC = () => {
                 </form>
                 <footer className={styles["modal__footer"]}>
                         <button className={styles["modal__close"]}>Cancel</button>
-                        <input type="submit" className={styles["modal__save"]} />
+                        <button className={styles["modal__save"]} />
                 </footer>
             </div>
         </div>
