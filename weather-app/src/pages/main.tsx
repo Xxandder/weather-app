@@ -14,7 +14,7 @@ const MainPage: React.FC = () => {
         console.log(name);
     }
 
-    const [showModal, setShowModal] = useState<boolean>(true);
+    const [showModal, setShowModal] = useState<boolean>(false);
 
     const toggleModal = useCallback(()=>{
         setShowModal(!showModal)
