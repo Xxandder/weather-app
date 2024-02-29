@@ -2,6 +2,7 @@ import { type TripData } from '~/libs/types/trip-data.type';
 import styles from './styles.module.scss';
 import { convertDateToString } from '~/libs/helpers/convert-date-to-string.helper';
 import { MouseEvent } from 'react';
+import clsx from 'clsx'
 
 type Properties = {
     trip: TripData,
@@ -11,12 +12,13 @@ type Properties = {
 
 const Trip: React.FC<Properties> = (props) =>{
     const { city, startDate, endDate, id } = props.trip;
-
     const handleTripClick = () => {
         props.onClick(id);
     }
 
-    return <div className={styles['trip']} onClick={handleTripClick}>
+    return <div className={clsx(styles['trip'],
+                            props.isActive && styles['trip_active'])}
+             onClick={handleTripClick}>
         <div className={styles['trip__image-container']}>
             <img src={city.image} alt={city.name} />
         </div>
