@@ -30,7 +30,7 @@ const MainPage: React.FC = () => {
                             <img src={searchIcon} alt="" />
                             <input type="text" value={name} onChange={handleInputOnChange} placeholder='Search your trip'/>
                     </div>
-                    <Trips/>
+                    <Trips onAddTripButtonClick={toggleModal}/>
                     <TripForecast tripForecast={tripsForecast}/>
                 </main>
                 <DailyForecast/>
