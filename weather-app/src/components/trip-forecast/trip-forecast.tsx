@@ -21,7 +21,7 @@ const TripForecast: React.FC<Properties> = (props) =>{
                         <img src={dailyForecast.iconLink} alt="" />
                     </div>
                     <div className={styles["trip-forecast__temperature"]}>
-                        {dailyForecast.minimumTemperature}<sup>°C</sup> - {dailyForecast.minimumTemperature}<sup>°C</sup>
+                        {dailyForecast.minimumTemperature}<sup>°C</sup> - {dailyForecast.maximumTemperature}<sup>°C</sup>
                          
                     </div>
                 </div>
