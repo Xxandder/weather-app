@@ -92,6 +92,6 @@ const tripsForecast = [
     },
 ]
 
+const API_ROOT_PATH = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline'
 
-
-export { cities, tripsForecast, tripsList };
+export { cities, tripsForecast, tripsList, API_ROOT_PATH };
