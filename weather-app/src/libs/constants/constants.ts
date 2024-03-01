@@ -1,6 +1,6 @@
 import berlinImage from '~/assets/images/berlin.jpg';
 import warsawImage from '~/assets/images/warsaw.jpg';
-import pragueImage from '~/assets/images/berlin.jpg';
+import pragueImage from '~/assets/images/prague.jpg';
 import cloudIcon from '~/assets/icons/cloud.svg'
 import { TripData } from '../types/trip-data.type';
 
@@ -12,13 +12,13 @@ const cities = [
 
 const tripsList: TripData[] = [
     {
-        id: 1,
+        id: 0,
         city: {
             name: 'Warsaw', 
             image: warsawImage,
         },
         startDate: new Date(),
-        endDate: new Date((new Date()).getDate() + 5)
+        endDate: new Date((new Date()).getTime() + 5*24*60*60*1000)
     }
 ]
 
