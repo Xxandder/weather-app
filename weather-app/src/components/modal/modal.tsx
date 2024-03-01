@@ -95,7 +95,7 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
                         styles["modal__button"],
                         )} onClick={()=>{
                             handleSaveClick();
-                           
+                           onClose();
                             }}>Save</button>
                 </footer>
             </div>
