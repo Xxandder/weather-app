@@ -1,6 +1,7 @@
 import { replaceTemplateWithValues } from "../helpers/replace-template-with-values.helper";
 import { API_ROOT_PATH } from "../constants/constants";
 import { convertDateToString } from "../helpers/convert-date-to-string.helper";
+import { tripForecastResponseToTripForecastData } from "../mappers/mappers";
 
 
 class ForecastApi {
@@ -12,17 +13,11 @@ class ForecastApi {
 
     public async getForecastForDaysRange(
         startDate: Date, endDate: Date, city: string){
-            const datesInRange = [];
-            let template = `${API_ROOT_PATH}/{location}`;
+            let template = `${API_ROOT_PATH}/{location}/{startDate}/{endDate}`;
             const replacements: Record<string ,string> = {};
-            let dateIndex = 0;
-            for (let currentDate = new Date(startDate); currentDate <= endDate; currentDate.setDate(currentDate.getDate() + 1)) {
-                datesInRange.push(new Date(currentDate));
-                template += `/{date${dateIndex}}`;
-                replacements[`date${dateIndex}`] = `${convertDateToString(currentDate)}`;
-                dateIndex += 1;
-            }
-            replacements['location'] = city
+            replacements['location'] = city;
+            replacements['startDate'] = convertDateToString(startDate);
+            replacements['endDate'] = convertDateToString(endDate);
             
             let url = replaceTemplateWithValues(template, replacements);
             url += `?${new URLSearchParams({
@@ -35,7 +30,7 @@ class ForecastApi {
                   throw new Error('Error in response');
                 }
                 const data = await response.json();
-                return data;
+                return tripForecastResponseToTripForecastData(data);
               } catch (error) {
                 console.error(error);
               }
