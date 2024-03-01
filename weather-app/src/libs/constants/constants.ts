@@ -92,6 +92,16 @@ const tripsForecast = [
     },
 ]
 
-const API_ROOT_PATH = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline'
+const API_ROOT_PATH = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline'ж
 
-export { cities, tripsForecast, tripsList, API_ROOT_PATH };
+const daysOfWeek = [
+    'Sunday', 
+    'Monday', 
+    'Tuesday', 
+    'Wednesday', 
+    'Thursday', 
+    'Friday', 
+    'Saturday'
+];
+
+export { cities, tripsForecast, tripsList, API_ROOT_PATH, daysOfWeek };
