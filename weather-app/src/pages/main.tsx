@@ -7,7 +7,7 @@ import clsx from 'clsx'
 import styles from './styles.module.scss';
 import { cities, tripsList } from '../libs/constants/constants.js';
 import { type TripData, type FormData } from '~/libs/types/types.js';
-
+import { forecastApi } from '~/libs/api/forecast-api.js';
 
 
 const MainPage: React.FC = () => {
@@ -40,8 +40,11 @@ const MainPage: React.FC = () => {
         setTrips([...trips, newTrip])
     }
 
-    const handleTripClick = useCallback((id: number) =>{
+    const handleTripClick = useCallback(async (id: number) =>{
         setCurrentTrip(id);
+        if(currentTrip)
+        console.log(await forecastApi.getForecastForDaysRange(trips[currentTrip].startDate,
+            trips[currentTrip].endDate,trips[currentTrip].city.name));
     }, [trips, currentTrip])
 
     return (
