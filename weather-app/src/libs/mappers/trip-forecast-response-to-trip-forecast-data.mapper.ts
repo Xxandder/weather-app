@@ -5,7 +5,7 @@ import { WeatherIconLink } from "../enums/enums.js";
 type TripForecast = {
     days: {
         tempmax: number;
-        tepmin: number;
+        tempmin: number;
         datetime: string;
         icon: string
     }[]
@@ -17,7 +17,7 @@ const tripForecastResponseToTripForecastData = (tripForecastResponse: TripForeca
             date: dayForecast.datetime,
             weekday: daysOfWeek[(new Date(dayForecast.datetime)).getDay()],
             iconLink: WeatherIconLink[dayForecast.icon as WeatherIconType] as string,
-            minimumTemperature: dayForecast.tepmin,
+            minimumTemperature: dayForecast.tempmin,
             maximumTemperature: dayForecast.tempmax
         }
     })
