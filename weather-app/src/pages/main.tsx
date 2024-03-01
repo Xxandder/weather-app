@@ -42,14 +42,14 @@ const MainPage: React.FC = () => {
 
     const handleTripClick = useCallback(async (id: number) =>{
         setCurrentTrip(id);
-        const tripForecast = await forecastApi.getForecastForDaysRange(trips[currentTrip as number].startDate,
-            trips[currentTrip as number].endDate,trips[currentTrip as number].city.name);
+        const tripForecast = await forecastApi.getForecastForDaysRange(trips[id].startDate,
+            trips[id].endDate,trips[id].city.name);
             
         if(tripForecast){
             setCurrentTripForecast(tripForecast)
         }
             
-        }, [trips, currentTripForecast, currentTrip])
+        }, [trips, currentTripForecast])
 
     return (
         <div className="_container">
