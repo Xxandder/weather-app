@@ -1,0 +1,1 @@
+export { tripForecastMapper } from './trip-forecast.mapper.js';
