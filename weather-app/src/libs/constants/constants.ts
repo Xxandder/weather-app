@@ -22,77 +22,8 @@ const tripsList: TripData[] = [
     }
 ]
 
-const tripsForecast = [
-    {
-        dayOfTheWeek: 'Monday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 15,
-        maxTemperature: 16
-    },
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
 
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-]
-
-const API_ROOT_PATH = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline'ж
+const API_ROOT_PATH = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline'
 
 const daysOfWeek = [
     'Sunday', 
@@ -104,4 +35,4 @@ const daysOfWeek = [
     'Saturday'
 ];
 
-export { cities, tripsForecast, tripsList, API_ROOT_PATH, daysOfWeek };
+export { cities, tripsList, API_ROOT_PATH, daysOfWeek };
