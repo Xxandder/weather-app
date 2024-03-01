@@ -11,7 +11,7 @@ type TripForecast = {
     }[]
 }
 
-const tripForecastMapper = (tripForecastResponse: TripForecast): DailyForecastData[] => {
+const tripForecastResponseToTripForecastData = (tripForecastResponse: TripForecast): DailyForecastData[] => {
     return tripForecastResponse.days.map(dayForecast => {
         return {
             date: dayForecast.datetime,
@@ -23,4 +23,4 @@ const tripForecastMapper = (tripForecastResponse: TripForecast): DailyForecastDa
     })
 }
 
-export { tripForecastMapper };
+export { tripForecastResponseToTripForecastData };

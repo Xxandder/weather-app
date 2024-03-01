@@ -1,1 +1,1 @@
-export { tripForecastMapper } from './trip-forecast.mapper.js';
+export { tripForecastResponseToTripForecastData } from './trip-forecast-response-to-trip-forecast-data.mapper.js';
