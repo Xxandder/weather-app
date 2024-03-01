@@ -1,13 +1,12 @@
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { DailyForecast, TripForecast, Trips, Modal } from '../components/components.js';
 import searchIcon from '~/assets/icons/search.svg';
-import { tripsForecast } from '../libs/constants/constants.js';
 import clsx from 'clsx'
 import styles from './styles.module.scss';
 import { cities, tripsList } from '../libs/constants/constants.js';
-import { type TripData, type FormData } from '~/libs/types/types.js';
-
+import { type TripData, type FormData, type DailyForecastData } from '~/libs/types/types.js';
+import { forecastApi } from '~/libs/api/forecast-api.js';
 
 
 const MainPage: React.FC = () => {
@@ -17,17 +16,20 @@ const MainPage: React.FC = () => {
 
     const [trips, setTrips] = useState<TripData[]>([...tripsList]);
 
+    const [currentTrip, setCurrentTrip] = useState<number | null>(trips[0].id ?? null);
+
+    const [currentTripForecast, setCurrentTripForecast] = useState<DailyForecastData[]>([]);
+
     const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
-        console.log(name);
     }
-
     const toggleModal = useCallback(()=>{
         setShowModal(!showModal)
     }, [showModal])
 
-    const addTrip =(trip: FormData) => {
+    const addTrip = (trip: FormData) => {
         const newTrip = {
+            id: trips[trips.length-1].id + 1,
             city: {
                 name: trip.city,
                 image: cities.find(city=>city.name===trip.city)?.image ?? ''
@@ -35,8 +37,26 @@ const MainPage: React.FC = () => {
             startDate: new Date(trip.startDate),
             endDate: new Date(trip.endDate)
         }
-        setTrips([...trips, newTrip])
+        setTrips([...trips, newTrip]);
+        setForecastForTrip(newTrip);
     }
+
+    const setForecastForTrip = async (trip: TripData) => {
+        setCurrentTrip(trip.id);
+        const tripForecast = await forecastApi.getForecastForDaysRange(trip.startDate,
+            trip.endDate,trip.city.name);
+        if(tripForecast){
+            setCurrentTripForecast(tripForecast)
+        }
+    }
+
+    const handleTripClick = useCallback(async (id: number) =>{
+            setForecastForTrip(trips[id]);
+        }, [trips, currentTripForecast])
+
+    useEffect(()=>{
+        setForecastForTrip(trips[0]);
+    }, [])
 
     return (
         <div className="_container">
@@ -50,8 +70,8 @@ const MainPage: React.FC = () => {
                             <img src={searchIcon} alt="" />
                             <input type="text" value={name} onChange={handleInputOnChange} placeholder='Search your trip'/>
                     </div>
-                    <Trips trips={trips} onAddTripButtonClick={toggleModal}/>
-                    <TripForecast tripForecast={tripsForecast}/>
+                    <Trips activeId={currentTrip ?? 0} trips={trips} onAddTripButtonClick={toggleModal} onTripClicked={handleTripClick}/>
+                    <TripForecast tripForecast={currentTripForecast}/>
                 </main>
                 <DailyForecast/>
                 

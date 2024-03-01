@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useRef, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import styles from './styles.module.scss';
 import closeIcon from '~/assets/icons/close-icon.svg';
 import clsx from 'clsx'
@@ -14,11 +14,10 @@ type Properties = {
 }
 
 const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
-
     const modalRef = useRef<HTMLDialogElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
 
-    const { register, handleSubmit, formState: { isValid, errors } } = useForm<FormData>();
+    const { register, handleSubmit, formState: { isValid, errors }, setValue  } = useForm<FormData>();
 
     const [startDateValue, setStartDateValue] = useState<Date | null>(null);
 
@@ -39,6 +38,10 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
     futureDate.setDate(futureDate.getDate() + DAYS_FOR_TRIP_RANGE);
     const maxDate = convertDateToString(futureDate);
 
+    useEffect(() => {
+        setValue('city', cities[0]);
+    }, [cities, setValue]);
+
     return (
     <dialog ref={modalRef}>
         <div className={styles['overlay']}>
@@ -56,8 +59,8 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
                     <label className={styles['modal__input']}>
                         <p><sup>*</sup>City</p>
                         <select {...register('city', {
-                                required: true,
-                              })}  name="" id="">
+                                
+                              })} >
                             {cities.map(city=>{
                                 return <option value={city}>{city}</option>
                             })}
@@ -92,7 +95,7 @@ const Modal: React.FC<Properties> = ({onClose, onSubmit, cities}) => {
                         styles["modal__button"],
                         )} onClick={()=>{
                             handleSaveClick();
-                            onClose();
+                           onClose();
                             }}>Save</button>
                 </footer>
             </div>

@@ -1,13 +1,8 @@
 import styles from './styles.module.scss';
+import { type DailyForecastData } from '~/libs/types/daily-forecast-data.type'
 
 type Properties = {
-    tripForecast: {
-        dayOfTheWeek: string;
-        icon: string;
-        date: string;
-        minTemperature: number;
-        maxTemperature: number;
-    }[]
+    tripForecast: DailyForecastData[]
 }
 
 
@@ -17,16 +12,16 @@ const TripForecast: React.FC<Properties> = (props) =>{
             props.tripForecast.map(dailyForecast => {
                 return <div className={styles['trip-forecast__day']}>
                     <h3 className={styles["trip-forecast__day-name"]}>
-                        {dailyForecast.dayOfTheWeek}
+                        {dailyForecast.weekday}
                     </h3>
                     <p className={styles["trip-forecast__date"]}>
                     {dailyForecast.date}
                     </p>
                     <div className={styles["trip-forecast__icon-container"]}>
-                        <img src={dailyForecast.icon} alt="" />
+                        <img src={dailyForecast.iconLink} alt="" />
                     </div>
                     <div className={styles["trip-forecast__temperature"]}>
-                        {dailyForecast.minTemperature}<sup>°C</sup> - {dailyForecast.maxTemperature}<sup>°C</sup>
+                        {dailyForecast.minimumTemperature}<sup>°C</sup> - {dailyForecast.maximumTemperature}<sup>°C</sup>
                          
                     </div>
                 </div>

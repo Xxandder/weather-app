@@ -1,6 +1,6 @@
 import berlinImage from '~/assets/images/berlin.jpg';
 import warsawImage from '~/assets/images/warsaw.jpg';
-import pragueImage from '~/assets/images/berlin.jpg';
+import pragueImage from '~/assets/images/prague.jpg';
 import cloudIcon from '~/assets/icons/cloud.svg'
 import { TripData } from '../types/trip-data.type';
 
@@ -12,85 +12,27 @@ const cities = [
 
 const tripsList: TripData[] = [
     {
+        id: 0,
         city: {
             name: 'Warsaw', 
             image: warsawImage,
         },
         startDate: new Date(),
-        endDate: new Date((new Date()).getDate() + 5)
+        endDate: new Date((new Date()).getTime() + 5*24*60*60*1000)
     }
 ]
 
-const tripsForecast = [
-    {
-        dayOfTheWeek: 'Monday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 15,
-        maxTemperature: 16
-    },
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
 
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
+const API_ROOT_PATH = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline'
 
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
+const daysOfWeek = [
+    'Sunday', 
+    'Monday', 
+    'Tuesday', 
+    'Wednesday', 
+    'Thursday', 
+    'Friday', 
+    'Saturday'
+];
 
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-    {
-        dayOfTheWeek: 'Tuesday',
-        icon: cloudIcon,
-        date: '28.02.2024',
-        minTemperature: 20,
-        maxTemperature: 25
-    },
-]
-
-
-
-export { cities, tripsForecast, tripsList };
+export { cities, tripsList, API_ROOT_PATH, daysOfWeek };
