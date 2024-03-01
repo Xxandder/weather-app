@@ -20,6 +20,8 @@ const MainPage: React.FC = () => {
 
     const [currentTripForecast, setCurrentTripForecast] = useState<DailyForecastData[]>([]);
 
+    const [currentTripTodaysForecast, setCurrentTripTodaysForecast] = useState<DailyForecastData | null>(null);
+
     const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
     }
@@ -73,7 +75,8 @@ const MainPage: React.FC = () => {
                     <Trips activeId={currentTrip ?? 0} trips={trips} onAddTripButtonClick={toggleModal} onTripClicked={handleTripClick}/>
                     <TripForecast tripForecast={currentTripForecast}/>
                 </main>
-                <DailyForecast/>
+                {currentTripTodaysForecast &&
+                 <DailyForecast forecast={currentTripTodaysForecast} city={trips[currentTrip as number].city.name}/>}
                 
             </div>
         </div>
