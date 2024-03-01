@@ -23,7 +23,6 @@ const MainPage: React.FC = () => {
     const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
     }
-
     const toggleModal = useCallback(()=>{
         setShowModal(!showModal)
     }, [showModal])
@@ -43,15 +42,14 @@ const MainPage: React.FC = () => {
 
     const handleTripClick = useCallback(async (id: number) =>{
         setCurrentTrip(id);
-        if(currentTrip){
-            const tripForecast = await forecastApi.getForecastForDaysRange(trips[currentTrip].startDate,
-                trips[currentTrip].endDate,trips[currentTrip].city.name);
-            if(tripForecast){
-                setCurrentTripForecast(tripForecast)
-            }
+        const tripForecast = await forecastApi.getForecastForDaysRange(trips[currentTrip as number].startDate,
+            trips[currentTrip as number].endDate,trips[currentTrip as number].city.name);
+            
+        if(tripForecast){
+            setCurrentTripForecast(tripForecast)
         }
             
-        }, [trips, currentTrip])
+        }, [trips, currentTripForecast, currentTrip])
 
     return (
         <div className="_container">
