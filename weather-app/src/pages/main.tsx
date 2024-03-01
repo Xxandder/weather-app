@@ -1,4 +1,4 @@
-import { ChangeEvent, useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { DailyForecast, TripForecast, Trips, Modal } from '../components/components.js';
 import searchIcon from '~/assets/icons/search.svg';
@@ -27,7 +27,7 @@ const MainPage: React.FC = () => {
         setShowModal(!showModal)
     }, [showModal])
 
-    const addTrip =(trip: FormData) => {
+    const addTrip = (trip: FormData) => {
         const newTrip = {
             id: trips[trips.length-1].id + 1,
             city: {
@@ -37,19 +37,26 @@ const MainPage: React.FC = () => {
             startDate: new Date(trip.startDate),
             endDate: new Date(trip.endDate)
         }
-        setTrips([...trips, newTrip])
+        setTrips([...trips, newTrip]);
+        setForecastForTrip(newTrip);
     }
 
-    const handleTripClick = useCallback(async (id: number) =>{
-        setCurrentTrip(id);
-        const tripForecast = await forecastApi.getForecastForDaysRange(trips[id].startDate,
-            trips[id].endDate,trips[id].city.name);
-            
+    const setForecastForTrip = async (trip: TripData) => {
+        setCurrentTrip(trip.id);
+        const tripForecast = await forecastApi.getForecastForDaysRange(trip.startDate,
+            trip.endDate,trip.city.name);
         if(tripForecast){
             setCurrentTripForecast(tripForecast)
         }
-            
+    }
+
+    const handleTripClick = useCallback(async (id: number) =>{
+            setForecastForTrip(trips[id]);
         }, [trips, currentTripForecast])
+
+    useEffect(()=>{
+        setForecastForTrip(trips[0]);
+    }, [])
 
     return (
         <div className="_container">
