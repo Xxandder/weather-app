@@ -20,12 +20,14 @@ class ForecastApi {
                 datesInRange.push(new Date(currentDate));
                 template += `/{date${dateIndex}}`;
                 replacements[`date${dateIndex}`] = `${convertDateToString(currentDate)}`;
+                dateIndex += 1;
             }
-
+            replacements['location'] = city
+            
             let url = replaceTemplateWithValues(template, replacements);
-            url += new URLSearchParams({
+            url += `?${new URLSearchParams({
                 key: this.apiKey
-            })
+            })}`
 
             try {
                 const response = await fetch(url);
@@ -33,7 +35,7 @@ class ForecastApi {
                   throw new Error('Error in response');
                 }
                 const data = await response.json();
-                console.log('Data:', data);
+                return data;
               } catch (error) {
                 console.error(error);
               }
