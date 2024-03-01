@@ -35,6 +35,30 @@ class ForecastApi {
                 console.error(error);
               }
         }
+
+        public async getForecastForDate(
+            date: Date, city: string){
+                let template = `${API_ROOT_PATH}/{location}/{date}`;
+                const replacements: Record<string ,string> = {};
+                replacements['location'] = city;
+                replacements['date'] = convertDateToString(date);
+                
+                let url = replaceTemplateWithValues(template, replacements);
+                url += `?${new URLSearchParams({
+                    key: this.apiKey
+                })}`
+    
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                      throw new Error('Error in response');
+                    }
+                    const data = await response.json();
+                    return tripForecastResponseToTripForecastData(data);
+                  } catch (error) {
+                    console.error(error);
+                  }
+            }
 }
 
 export { ForecastApi };
