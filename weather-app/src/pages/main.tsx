@@ -84,8 +84,10 @@ const MainPage: React.FC = () => {
                     <TripForecast tripForecast={currentTripForecast}/>
                 </main>
                 {currentTripTodaysForecast &&
-                 <DailyForecast forecast={currentTripTodaysForecast} city={trips[currentTrip as number].city.name}/>}
-                
+                 <DailyForecast
+                  forecast={currentTripTodaysForecast}
+                   city={trips[currentTrip as number].city.name}
+                   startTripDate={trips[currentTrip as number].startDate}/>}
             </div>
         </div>
     )

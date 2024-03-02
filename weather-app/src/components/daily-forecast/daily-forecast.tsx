@@ -8,9 +8,11 @@ import { type DailyForecastData } from '~/libs/types/types.js';
 type Properties = {
     forecast: DailyForecastData;
     city: string;
+    startTripDate: Date;
 }
 
-const DailyForecast: React.FC<Properties> = ({forecast, city}) =>{
+const DailyForecast: React.FC<Properties> = ({forecast, city, startTripDate}) =>{
+    console.log(startTripDate)
   return <div className={styles['daily-forecast']}>
             <div className={clsx(
                 styles["daily-forecast__cloud-first"],
@@ -55,7 +57,7 @@ const DailyForecast: React.FC<Properties> = ({forecast, city}) =>{
                         {city}
                     </div>
             </div>
-            <Countdown time={new Date('2024-03-02T12:00:00')}/>
+            <Countdown time={startTripDate}/>
         </div>
 
 }
