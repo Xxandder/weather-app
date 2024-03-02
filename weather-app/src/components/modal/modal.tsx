@@ -4,7 +4,7 @@ import closeIcon from '~/assets/icons/close-icon.svg';
 import clsx from 'clsx'
 import { convertDateToString } from "~/libs/helpers/helpers.js";
 import { DAYS_FOR_TRIP_RANGE } from "./libs/constants/constants";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { type FormData } from "~/libs/types/types.js";
 
 type Properties = {

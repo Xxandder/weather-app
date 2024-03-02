@@ -1,7 +1,6 @@
 import { type TripData } from '~/libs/types/trip-data.type';
 import styles from './styles.module.scss';
 import { convertDateToString } from '~/libs/helpers/convert-date-to-string.helper';
-import { MouseEvent } from 'react';
 import clsx from 'clsx'
 
 type Properties = {

@@ -1,5 +1,4 @@
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { DailyForecast, TripForecast, Trips, Modal } from '../components/components.js';
 import searchIcon from '~/assets/icons/search.svg';
 import clsx from 'clsx'
