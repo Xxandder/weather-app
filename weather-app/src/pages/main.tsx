@@ -7,10 +7,10 @@ import styles from './styles.module.scss';
 import { cities, tripsList } from '../libs/constants/constants.js';
 import { type TripData, type FormData, type DailyForecastData } from '~/libs/types/types.js';
 import { forecastApi } from '~/libs/api/forecast-api.js';
-
+import { convertDateToString } from '~/libs/helpers/helpers.js';
 
 const MainPage: React.FC = () => {
-    const [name, setName] = useState('');
+    const [searchValue, setSearchValue] = useState('');
 
     const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -23,8 +23,9 @@ const MainPage: React.FC = () => {
     const [currentTripTodaysForecast, setCurrentTripTodaysForecast] = useState<DailyForecastData | null>(null);
 
     const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setName(event.target.value);
+        setSearchValue(event.target.value);
     }
+
     const toggleModal = useCallback(()=>{
         setShowModal(!showModal)
     }, [showModal])
@@ -78,9 +79,15 @@ const MainPage: React.FC = () => {
                     <div className={clsx(styles["main__find-by-name"],
                                         styles["find-by-name"])}>         
                             <img src={searchIcon} alt="" />
-                            <input type="text" value={name} onChange={handleInputOnChange} placeholder='Search your trip'/>
+                            <input type="text" value={searchValue} onChange={handleInputOnChange} placeholder='Search your trip'/>
                     </div>
-                    <Trips activeId={currentTrip ?? 0} trips={trips} onAddTripButtonClick={toggleModal} onTripClicked={handleTripClick}/>
+                    <Trips
+                     activeId={currentTrip ?? 0} 
+                     trips={trips.filter(trip=>{
+                        return (trip.city.name.toLowerCase().includes(searchValue) ||
+                                convertDateToString(trip.startDate).toLowerCase().includes(searchValue))
+                    })} 
+                     onAddTripButtonClick={toggleModal} onTripClicked={handleTripClick}/>
                     <TripForecast tripForecast={currentTripForecast}/>
                 </main>
                 {currentTripTodaysForecast &&
