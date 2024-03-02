@@ -50,12 +50,12 @@ const MainPage: React.FC = () => {
         if(tripForecast){
             setCurrentTripForecast(tripForecast)
         };
-        setForecastForCurrentDayInTripCity();
+        setForecastForCurrentDayInTripCity(trip);
     }
 
-    const setForecastForCurrentDayInTripCity = async () =>{
+    const setForecastForCurrentDayInTripCity = async (trip: TripData) =>{
         const tripForecastCurrentDay = await forecastApi.getForecastForDate(
-            new Date(), trips[currentTrip as number].city.name);
+            new Date(), trip.city.name);
         if(tripForecastCurrentDay)
             setCurrentTripTodaysForecast(tripForecastCurrentDay[0]);
     }
