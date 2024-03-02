@@ -16,19 +16,12 @@ jobs:
         with:
           node-version: '20.x'
       - uses: actions/checkout@v3
-      - name: cd
-        run: cd weather-app 
-      - name: Install dependencies
-        run: npm install
-        working-directory: ./weather-app
-      - name: Build the app
-        run: npm run build
-        working-directory: ./weather-app
-      - name: Move dist folder
-        run: mv dist/* .
-        working-directory: ./weather-app
+      - name: Install dependencies and build the app
+        run: |
+          cd weather-app
+          npm install
+          npm run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist
-
+          folder: weather-app/dist
