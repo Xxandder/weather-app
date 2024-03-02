@@ -1,0 +1,85 @@
+.daily-forecast{
+    height: 600px;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(17, 14, 59);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.daily-forecast__info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.daily-forecast__day{
+    margin: 0;
+}
+
+.daily-forecast__value{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+}
+
+.daily-forecast__weather-icon{
+    position: absolute;
+    left: -60px;
+}
+
+.daily-forecast__weather-icon img{
+    width: 3rem;
+}
+
+.daily-forecast__temperature{
+    font-size: 5em;
+    font-weight: 300;
+}
+
+.daily-forecast__temperature sup{
+    font-size: 0.25em;
+    position: relative;
+    top: -1em;
+}
+
+.daily-forecast__city{
+    font-size: 1.5em;
+}
+
+
+.daily-forecast__cloud{
+   
+    
+}
+
+.daily-forecast__cloud-first{
+    top: -150px;
+    left: -150px;
+}
+
+.daily-forecast__cloud-second{
+    right: -50px;
+}
+
+.daily-forecast__cloud-third{
+    top: 100px;
+    left: -200px;
+}
+
+.daily-forecast__cloud-fourth{
+    top: 200px;
+    left: 0;
+}   
+
+.daily-forecast__cloud img{
+    height: 102px;
+    width: 128px;
+}

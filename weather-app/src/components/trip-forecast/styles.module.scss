@@ -1,0 +1,42 @@
+.trip-forecast{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: auto;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.trip-forecast__day{
+    display: flex;
+    flex-direction: column;
+    min-width: 80px;
+}
+
+.trip-forecast__day-name{
+   
+}
+
+.trip-forecast__date{
+    margin-top: 5px;
+}
+
+.trip-forecast__icon-container{
+    margin-top: 10px;
+}
+
+.trip-forecast__icon-container img{
+    width: 50px;
+}
+
+
+.trip-forecast__temperature{
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.trip-forecast__temperature sup{
+    font-size: 0.75em;
+    font-weight: 400;
+}
