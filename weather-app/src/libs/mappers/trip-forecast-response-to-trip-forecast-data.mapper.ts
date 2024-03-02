@@ -7,6 +7,7 @@ type TripForecast = {
     days: {
         tempmax: number;
         tempmin: number;
+        temp: number;
         datetime: string;
         icon: string
     }[]
@@ -21,7 +22,8 @@ const tripForecastResponseToTripForecastData = (tripForecastResponse: TripForeca
             weekday: daysOfWeek[(new Date(dayForecast.datetime)).getDay()],
             iconLink: WeatherIconLink[dayForecast.icon as WeatherIconType] as string,
             minimumTemperature: convertFahrenheitToCelsius(dayForecast.tempmin),
-            maximumTemperature: convertFahrenheitToCelsius(dayForecast.tempmax)
+            maximumTemperature: convertFahrenheitToCelsius(dayForecast.tempmax),
+            temperature: convertFahrenheitToCelsius(dayForecast.temp)
         }
     })
 }

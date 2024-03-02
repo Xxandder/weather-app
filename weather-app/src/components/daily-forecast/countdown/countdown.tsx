@@ -28,12 +28,21 @@ const CountdownBlock: React.FC<CountdownBlockProperties> = ({value, name}) => {
 }
 
 const Countdown: React.FC<Properties> = ({time}) =>{
+    
     const [timeLeft, setTimeLeft] = useState(getTimeDifference(time));
+    useEffect(() => {
+        setTimeLeft(getTimeDifference(time));
+    }, [time])
 
     useEffect(() => {
-        setInterval(() => {
+        const intervalId  = setInterval(() => {
             setTimeLeft(getTimeDifference(time));
-        }, 1000)})
+        }, 1000)
+        
+        return () => clearInterval(intervalId);
+    }, [timeLeft])
+
+    
         
     return <div className={styles['countdown']}>
             <CountdownBlock value={timeLeft.days} name={TimeValueType.DAYS}/>

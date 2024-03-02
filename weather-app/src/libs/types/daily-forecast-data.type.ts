@@ -4,6 +4,7 @@ type DailyForecastData = {
     iconLink: string;
     minimumTemperature: number;
     maximumTemperature: number;
+    temperature: number;
 }
 
 export { type DailyForecastData };

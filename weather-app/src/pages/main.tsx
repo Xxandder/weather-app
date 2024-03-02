@@ -20,6 +20,8 @@ const MainPage: React.FC = () => {
 
     const [currentTripForecast, setCurrentTripForecast] = useState<DailyForecastData[]>([]);
 
+    const [currentTripTodaysForecast, setCurrentTripTodaysForecast] = useState<DailyForecastData | null>(null);
+
     const handleInputOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setName(event.target.value);
     }
@@ -47,7 +49,15 @@ const MainPage: React.FC = () => {
             trip.endDate,trip.city.name);
         if(tripForecast){
             setCurrentTripForecast(tripForecast)
-        }
+        };
+        setForecastForCurrentDayInTripCity(trip);
+    }
+
+    const setForecastForCurrentDayInTripCity = async (trip: TripData) =>{
+        const tripForecastCurrentDay = await forecastApi.getForecastForDate(
+            new Date(), trip.city.name);
+        if(tripForecastCurrentDay)
+            setCurrentTripTodaysForecast(tripForecastCurrentDay[0]);
     }
 
     const handleTripClick = useCallback(async (id: number) =>{
@@ -73,8 +83,11 @@ const MainPage: React.FC = () => {
                     <Trips activeId={currentTrip ?? 0} trips={trips} onAddTripButtonClick={toggleModal} onTripClicked={handleTripClick}/>
                     <TripForecast tripForecast={currentTripForecast}/>
                 </main>
-                <DailyForecast/>
-                
+                {currentTripTodaysForecast &&
+                 <DailyForecast
+                  forecast={currentTripTodaysForecast}
+                   city={trips[currentTrip as number].city.name}
+                   startTripDate={trips[currentTrip as number].startDate}/>}
             </div>
         </div>
     )
