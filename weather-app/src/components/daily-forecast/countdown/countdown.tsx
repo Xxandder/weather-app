@@ -32,7 +32,7 @@ const Countdown: React.FC<Properties> = ({time}) =>{
     const [timeLeft, setTimeLeft] = useState(getTimeDifference(time));
     useEffect(() => {
         setTimeLeft(getTimeDifference(time));
-    }, [])
+    }, [time])
 
     useEffect(() => {
         const intervalId  = setInterval(() => {

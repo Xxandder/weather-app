@@ -12,7 +12,6 @@ type Properties = {
 }
 
 const DailyForecast: React.FC<Properties> = ({forecast, city, startTripDate}) =>{
-    console.log(startTripDate)
   return <div className={styles['daily-forecast']}>
             <div className={clsx(
                 styles["daily-forecast__cloud-first"],
