@@ -26,6 +26,7 @@ jobs:
         working-directory: ./weather-app
       - name: Move dist folder
         run: mv dist/* .
+        working-directory: ./weather-app
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
