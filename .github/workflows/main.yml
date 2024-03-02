@@ -19,7 +19,7 @@ jobs:
       - name: cd
         run: cd weather-app 
       - name: Install dependencies
-        run: npm ci 
+        run: npm install
       - name: Build the app
         run: npm run build
       - name: Deploy
