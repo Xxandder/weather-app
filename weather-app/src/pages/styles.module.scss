@@ -2,9 +2,10 @@
     display: flex;
     gap: 30px;
     flex-wrap: nowrap;
-    justify-content: center;
+    justify-content: space-between;
     padding-top: 30px;
     max-width: 100%;
+    width: 100%;
 }
 
 .main{
