@@ -27,5 +27,5 @@ jobs:
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: ./weather-app/dist
+          folder: dist
 
