@@ -1,5 +1,4 @@
 import styles from './styles.module.scss';
-import rainyIcon from '~/assets/icons/weather/rainy.svg';
 import cloudIcon from '~/assets/icons/cloud.svg';
 import { clsx } from 'clsx'
 import { Countdown } from './countdown/countdown.js';
