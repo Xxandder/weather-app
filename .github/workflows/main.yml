@@ -24,9 +24,10 @@ jobs:
       - name: Build the app
         run: npm run build
         working-directory: ./weather-app
+      - name: Move dist folder
+        run: mv dist/* .
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
-        working-directory: ./weather-app
 
