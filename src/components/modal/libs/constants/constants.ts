@@ -1,3 +1,0 @@
-const DAYS_FOR_TRIP_RANGE = 15;
-
-export { DAYS_FOR_TRIP_RANGE };
